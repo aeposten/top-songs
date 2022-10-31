@@ -1,6 +1,8 @@
 import listen_history from "./data/listen_history.json";
 function App() {
   const DATA = listen_history;
+  let dateArr = [];
+
 
   function mostFrequent(arr, category, k) {
     const frequency = new Map();
@@ -13,7 +15,7 @@ function App() {
     }
 
     for (let [ele, freq] of frequency) {
-      bucket[freq] = new Set().add({ title: ele, frequency: freq });
+      bucket[freq] = (bucket[freq] || new Set().add({ title: ele, frequency: freq }))
     }
 
     for (let i = bucket.length; i >= 0; i--) {
@@ -27,6 +29,16 @@ function App() {
     return result;
   }
 
+  function getDate(arr) {
+
+
+    for (let ele of arr) {
+      dateArr.push(ele.time)
+    }
+    return dateArr
+  }
+
+  console.log(getDate(DATA))
   console.log(mostFrequent(DATA, "title", 10));
 
   return <div className="App">It's an app!.</div>;
