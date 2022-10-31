@@ -1,15 +1,15 @@
+import { useState } from "react";
 import listen_history from "./data/listen_history.json";
 import RankedItem from "./RankedItem";
 
 function App() {
   const DATA = listen_history;
   const dateArr = [];
-
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
   function mostFrequent(arr, category, k) {
     const frequency = new Map();
     const bucket = [];
     const result = [];
-
     if (category) {
       category = category;
     } else {
@@ -57,33 +57,45 @@ function App() {
     return dateArr;
   }
 
+  function handleClick() {
+    setIsButtonVisible(!isButtonVisible);
+  }
+
   getDaysOfWeek(DATA);
   return (
     <div className="App">
-      <label for="song-list">Top 10 Most Listened Songs</label>
-      <ol id="song-list">
-        {mostFrequent(DATA, "title", 10).map((element, index) => (
-          <li>
-            <RankedItem
-              key={index}
-              title={element.title.slice(8)}
-              frequency={element.frequency}
-            />
-          </li>
-        ))}
-      </ol>
-      <label for="date-list">Day Most Listened On</label>
-      <ol id="date-list">
-        {mostFrequent(dateArr, null, 7).map((element, index) => (
-          <li>
-            <RankedItem
-              key={index}
-              title={element.title}
-              frequency={element.frequency}
-            />
-          </li>
-        ))}
-      </ol>
+      {isButtonVisible ? (
+        <>
+          <button onClick={handleClick}>Click to Render Data</button>
+        </>
+      ) : (
+        <div id="lists">
+          <h2>Top 10 Most Listened Songs</h2>
+          <ol id="song-list">
+            {mostFrequent(DATA, "title", 10).map((element, index) => (
+              <li>
+                <RankedItem
+                  key={index}
+                  title={element.title.slice(8)}
+                  frequency={element.frequency}
+                />
+              </li>
+            ))}
+          </ol>
+          <h2>Day Most Listened On</h2>
+          <ol id="date-list">
+            {mostFrequent(dateArr, null, 7).map((element, index) => (
+              <li>
+                <RankedItem
+                  key={index}
+                  title={element.title}
+                  frequency={element.frequency}
+                />
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
     </div>
   );
 }
