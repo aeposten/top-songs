@@ -8,11 +8,12 @@ function App() {
     const result = [];
 
     for (let ele of arr) {
-      frequency.set(arr, (frequency.get(arr) || 0) + 1);
+      frequency.set(ele.title, (frequency.get(ele.title) || 0) + 1);
     }
 
     for (let [ele, freq] of frequency) {
-      bucket[freq] = (bucket[freq] || new Set().add(ele))
+      bucket[freq] = (new Set().add({title: ele,
+      frequency: freq}))
     }
 
     for (let i = bucket.length; i >= 0; i--) {
