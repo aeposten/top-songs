@@ -33,7 +33,7 @@ function App() {
 
 
     for (let ele of arr) {
-      dateArr.push(ele.time)
+      dateArr.push(ele.time.slice(0,10))
     }
     return dateArr
   }
