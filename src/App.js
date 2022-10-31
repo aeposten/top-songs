@@ -57,14 +57,13 @@ function App() {
     return dateArr;
   }
 
-
   getDaysOfWeek(DATA);
   return (
     <div className="App">
-      <dl>
+      <label for="song-list">Top 10 Most Listened Songs</label>
+      <ol id="song-list">
         {mostFrequent(DATA, "title", 10).map((element, index) => (
           <li>
-            {index + 1}
             <RankedItem
               key={index}
               title={element.title.slice(8)}
@@ -72,11 +71,11 @@ function App() {
             />
           </li>
         ))}
-      </dl>
-      <dl>
+      </ol>
+      <label for="date-list">Day Most Listened On</label>
+      <ol id="date-list">
         {mostFrequent(dateArr, null, 7).map((element, index) => (
           <li>
-            {index + 1}
             <RankedItem
               key={index}
               title={element.title}
@@ -84,7 +83,7 @@ function App() {
             />
           </li>
         ))}
-      </dl>
+      </ol>
     </div>
   );
 }
