@@ -6,6 +6,8 @@ function App() {
   const DATA = listen_history;
   const dateArr = [];
   const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  
   function mostFrequent(arr, category, k) {
     const frequency = new Map();
     const bucket = [];
