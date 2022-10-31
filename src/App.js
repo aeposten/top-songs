@@ -1,7 +1,9 @@
 import listen_history from "./data/listen_history.json";
+import RankedItem from "./RankedItem";
+
 function App() {
   const DATA = listen_history;
-  let dateArr = [];
+  const dateArr = [];
 
   function mostFrequent(arr, category, k) {
     const frequency = new Map();
@@ -39,19 +41,52 @@ function App() {
   }
 
   function getDaysOfWeek(arr) {
-    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    let days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
     for (let ele of arr) {
-      let yearMonthDay = (ele.time.slice(0, 10));
+      let yearMonthDay = ele.time.slice(0, 10);
       dateArr.push(days[new Date(yearMonthDay).getDay()]);
     }
     return dateArr;
   }
 
-console.log(  getDaysOfWeek(DATA))
-  console.log(mostFrequent(DATA, "title", 10));
-  console.log(mostFrequent(dateArr, null, 7));
 
-  return <div className="App">It's an app!.</div>;
+  getDaysOfWeek(DATA);
+  return (
+    <div className="App">
+      <dl>
+        {mostFrequent(DATA, "title", 10).map((element, index) => (
+          <li>
+            {index + 1}
+            <RankedItem
+              key={index}
+              title={element.title.slice(8)}
+              frequency={element.frequency}
+            />
+          </li>
+        ))}
+      </dl>
+      <dl>
+        {mostFrequent(dateArr, null, 7).map((element, index) => (
+          <li>
+            {index + 1}
+            <RankedItem
+              key={index}
+              title={element.title}
+              frequency={element.frequency}
+            />
+          </li>
+        ))}
+      </dl>
+    </div>
+  );
 }
 
 export default App;
