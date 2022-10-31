@@ -2,13 +2,14 @@ import listen_history from "./data/listen_history.json";
 function App() {
   const DATA = listen_history;
 
-  function mostFrequent(arr, k) {
+  function mostFrequent(arr, category, k) {
     const frequency = new Map();
     const bucket = [];
     const result = [];
 
+
     for (let ele of arr) {
-      frequency.set(ele.title, (frequency.get(ele.title) || 0) + 1);
+      frequency.set(ele[category], (frequency.get(ele[category]) || 0) + 1);
     }
 
     for (let [ele, freq] of frequency) {
@@ -26,7 +27,7 @@ function App() {
     return result;
   }
 
-  console.log(mostFrequent(DATA, 10));
+  console.log(mostFrequent(DATA, "title", 10));
 
   return <div className="App">It's an app!.</div>;
 }
