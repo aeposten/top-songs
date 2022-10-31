@@ -1,8 +1,8 @@
-import listen_history from './data/listen_history.json'
+import listen_history from "./data/listen_history.json";
 function App() {
   const DATA = listen_history;
 
-  function mostFrequent (arr, k) {
+  function mostFrequent(arr, k) {
     const frequency = new Map();
     const bucket = [];
     const result = [];
@@ -12,24 +12,23 @@ function App() {
     }
 
     for (let [ele, freq] of frequency) {
-      bucket[freq] = (new Set().add({title: ele,
-      frequency: freq}))
+      bucket[freq] = new Set().add({ title: ele, frequency: freq });
     }
 
     for (let i = bucket.length; i >= 0; i--) {
-      if (bucket[i]) result.push(...bucket[i]);
-      if (result.length >= k) break;
+      if (bucket[i]) {
+        result.push(...bucket[i]);
+      }
+      if (result.length >= k) {
+        break;
+      }
     }
     return result;
   }
 
-  console.log(mostFrequent(DATA, 10))
+  console.log(mostFrequent(DATA, 10));
 
-  return (
-    <div className="App">
-      It's an app!.
-    </div>
-  );
+  return <div className="App">It's an app!.</div>;
 }
 
 export default App;
