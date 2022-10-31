@@ -12,9 +12,7 @@ function App() {
     const frequency = new Map();
     const bucket = [];
     const result = [];
-    if (category) {
-      category = category;
-    } else {
+    if (!category) {
       category = null;
     }
 
