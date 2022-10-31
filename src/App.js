@@ -38,14 +38,16 @@ function App() {
     return result;
   }
 
-  function getDate(arr) {
+  function getDaysOfWeek(arr) {
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     for (let ele of arr) {
-      dateArr.push(ele.time.slice(0, 10));
+      let yearMonthDay = (ele.time.slice(0, 10));
+      dateArr.push(days[new Date(yearMonthDay).getDay()]);
     }
     return dateArr;
   }
 
-  getDate(DATA);
+console.log(  getDaysOfWeek(DATA))
   console.log(mostFrequent(DATA, "title", 10));
   console.log(mostFrequent(dateArr, null, 7));
 
