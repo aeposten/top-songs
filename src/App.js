@@ -7,11 +7,11 @@ function App() {
   const dateArr = [];
   const [isButtonVisible, setIsButtonVisible] = useState(true);
 
-  
   function mostFrequent(arr, category, k) {
     const frequency = new Map();
     const bucket = [];
     const result = [];
+
     if (!category) {
       category = null;
     }
@@ -76,7 +76,7 @@ function App() {
               <li>
                 <RankedItem
                   key={index}
-                  title={element.title.slice(8)}
+                  song={element.title.slice(8)}
                   frequency={element.frequency}
                 />
               </li>
@@ -88,7 +88,7 @@ function App() {
               <li>
                 <RankedItem
                   key={index}
-                  title={element.title}
+                  day={element.title}
                   frequency={element.frequency}
                 />
               </li>

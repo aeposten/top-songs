@@ -1,7 +1,18 @@
 import React from "react";
-function RankedItem({title, frequency}) {
-    return (
-        <div>{title} {frequency}</div>
-    )
+function RankedItem({ frequency, day, song }) {
+  return (
+    <>
+      {song && (
+        <div>
+          Song Name{song} Times Watched{frequency}
+        </div>
+      )}
+      {day && (
+        <div>
+          Day of the Week{day} Songs Listened to{frequency}
+        </div>
+      )}
+    </>
+  );
 }
 export default RankedItem;
