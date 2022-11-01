@@ -1,6 +1,6 @@
 # Top Songs
 - Built using React, HTML, and CSS
-- Visit Deployed Version - [Top Songs](https://top-songs-takehome.netlify.app/)
+- Visit Deployed Version - [Top Songs](https://top-songs-takehome.netlify.app/){:target="_blank"}
 
 ## Installation and Launch
 - Use `npm install` in project's root directory to install dependencies
