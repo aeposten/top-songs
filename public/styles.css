@@ -10,10 +10,7 @@
 body {
   margin: 0;
   height: 100vh;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  align-content: center;
   font-family: "Kanit", sans-serif;
   color: var(--offwhite);
   background-color: var(--mainbg);
@@ -25,9 +22,6 @@ body {
 }
 
 #lists {
-  display: flex;
-  justify-content: center;
-  align-content: center;
   padding: 20px;
   background-color: var(--appbg);
 }
@@ -48,6 +42,7 @@ span {
   font-style: italic;
 }
 
+/* Styling for button */
 button {
   cursor: pointer;
   width: 200px;
@@ -62,4 +57,11 @@ button {
 button:hover,
 button:focus {
   transform: scale(1.1);
+}
+
+/* Grouping commonly shared properties */
+body, #lists {
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }

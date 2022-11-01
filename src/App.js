@@ -36,7 +36,6 @@ function App() {
         new Set().add({ title: ele, frequency: freq });
     }
 
-    
     //Iterates backward over itemsByFrequency pushing elements to results array until desired number of elements (k) is reached
     for (let i = itemsByFrequency.length; i >= 0; i--) {
       if (itemsByFrequency[i]) {
@@ -49,10 +48,8 @@ function App() {
     return result;
   }
 
-
   //Creates an array containing the days of the week on which each song was listened
   function getDaysOfWeek(arr) {
-
     //.getDay returns a number between 0 and 6 corresponding to the day of the week
     let days = [
       "Sunday",
@@ -71,7 +68,7 @@ function App() {
       //parses day of the week from the yearMonthDay string
       dateArr.push(days[new Date(yearMonthDay).getDay()]);
     }
-    //Returns dateArr that can be passed into the mostFrequent function 
+    //Returns dateArr that can be passed into the mostFrequent function
     return dateArr;
   }
 
@@ -81,8 +78,6 @@ function App() {
   function handleClick() {
     setIsButtonVisible(!isButtonVisible);
   }
-
-
 
   return (
     <div className="App">
@@ -97,9 +92,8 @@ function App() {
             <h2>Top 10 Songs</h2>
             <ol id="song-list">
               {mostFrequent(DATA, "title", 10).map((element, index) => (
-                <li>
+                <li key={index}>
                   <RankedItem
-                    key={index}
                     song={element.title.slice(8)}
                     frequency={element.frequency}
                   />
@@ -111,9 +105,8 @@ function App() {
             <h2>Day Most Listened On</h2>
             <ol id="date-list">
               {mostFrequent(dateArr, null, 7).map((element, index) => (
-                <li>
+                <li key={index}>
                   <RankedItem
-                    key={index}
                     day={element.title}
                     frequency={element.frequency}
                   />
