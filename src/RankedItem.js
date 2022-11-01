@@ -4,12 +4,12 @@ function RankedItem({ frequency, day, song }) {
     <>
       {song && (
         <div>
-          Song Name{song} Times Watched{frequency}
+          Song Name - <span>{song}</span><p>Times Listened To - {frequency}</p>
         </div>
       )}
       {day && (
         <div>
-          Day of the Week{day} Songs Listened to{frequency}
+          Day - {day} <p>Songs Listened To - {frequency}</p>
         </div>
       )}
     </>

@@ -1,3 +1,66 @@
-dl {
-    list-style: none;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;800&display=swap');
+
+:root {
+    --mainbg: #080708;
+    --appbg:#1f2937;
+    --blue: #00cecb;
+    --offwhite: #f8f7ff;
+  }
+
+
+
+body {
+    margin:0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-family: 'Kanit', sans-serif;
+    color: var(--offwhite);
+    background-color: var(--mainbg);
+}
+
+#App {
+    max-width: 600px;
+    width: 80%;
+}
+
+#lists {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 20px;
+    background-color: var(--appbg);
+}
+
+.list {
+    padding: 12px;
+}
+
+li {
+    padding: 4px;
+}
+
+p {
+    margin: 2px;
+}
+
+span {
+    font-style: italic;
+}
+
+button {
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition-duration: 300ms;
+}
+
+button:hover, button:focus {
+    transform: scale(1.1);
 }

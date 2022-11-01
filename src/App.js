@@ -70,7 +70,8 @@ function App() {
         </>
       ) : (
         <div id="lists">
-          <h2>Top 10 Most Listened Songs</h2>
+          <section className="list">
+          <h2>Top 10 Songs</h2>
           <ol id="song-list">
             {mostFrequent(DATA, "title", 10).map((element, index) => (
               <li>
@@ -82,6 +83,8 @@ function App() {
               </li>
             ))}
           </ol>
+          </section>
+          <section className="list">
           <h2>Day Most Listened On</h2>
           <ol id="date-list">
             {mostFrequent(dateArr, null, 7).map((element, index) => (
@@ -94,6 +97,7 @@ function App() {
               </li>
             ))}
           </ol>
+          </section>
         </div>
       )}
     </div>
