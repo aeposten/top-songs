@@ -25,6 +25,8 @@ body {
 #lists {
   padding: 20px;
   background-color: var(--appbg);
+  justify-content: center;
+  align-content: center;
 }
 
 .list {

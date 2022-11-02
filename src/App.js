@@ -1,6 +1,6 @@
 import { useState } from "react";
 import listen_history from "./data/listen_history.json";
-import RankedItem from "./RankedItem";
+import ItemLists from "./ItemLists";
 
 function App() {
   const DATA = listen_history;
@@ -52,13 +52,7 @@ function App() {
   function getDaysOfWeek(arr) {
     //.getDay returns a number between 0 and 6 corresponding to the day of the week
     let days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
+      "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
     ];
 
     //Iterates over array creating a new array containing day of the week
@@ -83,38 +77,9 @@ function App() {
     <div className="App">
       {/* Conditionally renders button and data visibility */}
       {isButtonVisible ? (
-        <>
-          <button onClick={handleClick}>Click to Render Data</button>
-        </>
+        <button onClick={handleClick}>Click to Render Data</button>
       ) : (
-        <div id="lists">
-          <section className="list">
-            <h2>Top 10 Songs</h2>
-            <ol id="song-list">
-              {mostFrequent(DATA, "title", 10).map((element, index) => (
-                <li key={index}>
-                  <RankedItem
-                    song={element.title.slice(8)}
-                    frequency={element.frequency}
-                  />
-                </li>
-              ))}
-            </ol>
-          </section>
-          <section className="list">
-            <h2>Day Most Listened On</h2>
-            <ol id="date-list">
-              {mostFrequent(dateArr, null, 7).map((element, index) => (
-                <li key={index}>
-                  <RankedItem
-                    day={element.title}
-                    frequency={element.frequency}
-                  />
-                </li>
-              ))}
-            </ol>
-          </section>
-        </div>
+        <ItemLists DATA={DATA} dateArr={dateArr} mostFrequent={mostFrequent} />
       )}
     </div>
   );
